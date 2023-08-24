@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const currentDate = new Date();
   const formatedDate = `${currentDate.getDate()}-${
     currentDate.getMonth() + 1
@@ -73,10 +73,13 @@ const ExpenseForm = () => {
       amount : amount,
       date : new Date(date)
     }
-    console.log("user Entered Data",expenseData);
+    
+    props.onSaveExpenseData(expenseData);
     setTitle('');
     setAmount('');
     setDate('');
+
+
   }
 
 
@@ -84,8 +87,7 @@ const ExpenseForm = () => {
     <form onSubmit={handleSubmit}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
-          <h6>The Current Date is {formatedDate}</h6>
-
+          
           <label htmlFor=""> Title </label>
           <input
             type="text"
