@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import NewExpense from './components/NewExpenses/NewExpense';
 import Expenses from './components/Expenses/Expenses';
+import NewExpense from './components/NewWxpenses/NewExpense';
 
-const DUMMY_EXPENSES = [
+const dummy_expense = [
   {
     id: 'e1',
     title: 'Toilet Paper',
@@ -25,28 +25,23 @@ const DUMMY_EXPENSES = [
   },
 ];
 
+
+
 const App = () => {
-  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+ const [expenses, setExpenses]= useState(dummy_expense)
 
-  const addExpenseHandler = (expense) => {
-    setExpenses((prevExpenses) => {
-      return [expense, ...prevExpenses];
+  const addExpenseHandler = expense => {
+    setExpenses( (prevExpense) => {
+      return [expense, ...prevExpense];
     });
-  };
-
-  // return React.createElement(
-  //   'div',
-  //   {},
-  //   React.createElement('h2', {}, "Let's get started!"),
-  //   React.createElement(Expenses, { items: expenses })
-  // );
+  }
 
   return (
     <div>
-      <NewExpense onAddExpense={addExpenseHandler} />
+      <NewExpense onAddexpense = {addExpenseHandler}/>
       <Expenses items={expenses} />
     </div>
   );
-};
+}
 
 export default App;
